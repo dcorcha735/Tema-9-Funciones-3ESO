@@ -266,3 +266,6 @@ footer .footer-box{
   .grid.cards-2{grid-template-columns:1fr}
   .sidebar{position:static}
 }
+
+.formula{font-family:Cambria, "Times New Roman", serif; font-style:italic;}
+.formula-block{font-family:Cambria, "Times New Roman", serif; line-height:1.8;}

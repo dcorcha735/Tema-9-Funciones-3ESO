@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>2. Dominio y recorrido · Tema 9</title>
   <link rel="stylesheet" href="../css/styles.css">
-  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]]},svg:{fontCache:'global'}};</script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  
   <script src="https://www.geogebra.org/apps/deployggb.js"></script>
   <script src="../js/ggb-helper.js"></script>
 </head>
@@ -32,13 +32,13 @@
     <div class="breadcrumbs"><a href="../index.html">Inicio</a> · 2. Dominio y recorrido</div>
     <section class="card">
       <h2>Dominio e imagen</h2>
-      <p>El <strong>dominio</strong> es el conjunto de valores de \(x\) para los que la función existe. La <strong>imagen</strong> o recorrido es el conjunto de valores de \(y\) que alcanza.</p>
-      <div class="math-box">En \(f(x)=\dfrac{1}{x-a}\), el dominio es \(\mathbb{R}\setminus\{a\}\).<br>En \(g(x)=\sqrt{x-b}\), el dominio cumple \(x\ge b\).</div>
+      <p>El <strong>dominio</strong> es el conjunto de valores de <em>x</em> para los que la función existe. La <strong>imagen</strong> o recorrido es el conjunto de valores de <em>y</em> que alcanza.</p>
+      <div class="math-box formula-block">En f(x) = 1/(x − a), el dominio es ℝ \ {a}.<br>En g(x) = √(x − b), el dominio cumple x ≥ b.</div>
     </section>
     <section class="ggb-card">
       <h3>Applet · Dominio de una racional</h3>
-      <p>Mueve \(a\). Aparece una asíntota vertical en \(x=a\), que queda excluida del dominio.</p>
-      <div class="controls"><div class="control"><label>Valor de \(a\) <span id="dom-a-value"></span></label><input id="dom-a" type="range" min="-4" max="4" step="0.5" value="1"></div></div>
+      <p>Mueve <em>a</em>. Aparece una asíntota vertical en x = a, que queda excluida del dominio.</p>
+      <div class="controls"><div class="control"><label>Valor de <em>a</em> <span id="dom-a-value"></span></label><input id="dom-a" type="range" min="-4" max="4" step="0.5" value="1"></div></div>
       <div class="math-box" id="dom-text"></div>
       <div class="ggb-wrap"><div id="ggb-dom" class="ggb-container"></div></div>
     </section>
@@ -50,8 +50,7 @@
 let appDom;
 function updateDomText(){
   const a=Number(document.getElementById('dom-a').value);
-  document.getElementById('dom-text').innerHTML = String.raw`Función: \(f(x)=\dfrac{1}{x-${a}}\). Dominio: \(\mathbb{R}\setminus\{${a}\}\).`;
-  rerenderMath();
+  document.getElementById('dom-text').innerHTML = `Función: <span class="formula">f(x) = 1/(x - ${a})</span>. Dominio: <span class="formula">ℝ \ {${a}}</span>.`;
 }
 createApplet('ggb-dom', api => {
   appDom=api;

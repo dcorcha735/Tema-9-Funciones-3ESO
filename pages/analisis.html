@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>7. Análisis global · Tema 9</title><link rel="stylesheet" href="../css/styles.css"><script>window.MathJax={tex:{inlineMath:[["\(","\)"],["$","$"]]},svg:{fontCache:'global'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://www.geogebra.org/apps/deployggb.js"></script><script src="../js/ggb-helper.js"></script></head>
+<body><header class="site-header"><div class="container"><div class="topbar"><div class="brand"><img src="../assets/moto-mates.png" alt="Logo Moto-Mates"><div class="brand-text"><h1>Tema 9 · Funciones · 3.º ESO</h1><p>7. Análisis global · David Cortés Chaparro</p></div></div><nav class="nav"><a href="../index.html">Inicio</a><a href="concepto.html">Concepto de función</a><a href="dominio.html">Dominio y recorrido</a><a href="cortes.html">Puntos de corte</a><a href="monotonia.html">Monotonía y extremos</a><a href="simetria.html">Simetría y periodicidad</a><a href="trozos.html">Funciones a trozos</a><a href="analisis.html" class="active">Análisis global</a><a href="lineales.html">Funciones lineales</a><a href="cuadraticas.html">Funciones cuadráticas</a></nav></div></div></header>
+<main><div class="container"><div class="breadcrumbs"><a href="../index.html">Inicio</a> · 7. Análisis global</div>
+<section class="card"><h2>Análisis global de una gráfica</h2><p>Para estudiar una función conviene revisar dominio, recorrido, continuidad, puntos de corte, monotonía y extremos.</p><div class="math-box">En la gráfica se señalan un máximo, un mínimo y el corte con el eje Y para poder analizarlos visualmente.</div></section>
+<section class="ggb-card"><h3>Applet · Curva para analizar</h3><p>La curva siguiente permite observar cortes con los ejes, máximos, mínimos y cambio de crecimiento.</p><div class="ggb-wrap"><div id="ggb-analisis" class="ggb-container"></div></div></section>
+<div class="page-nav"><a class="button secondary" href="trozos.html">← Anterior</a><a class="button" href="lineales.html">Siguiente →</a></div></div></main>
+<footer><div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Versión corregida sin errores de sintaxis matemática.</div></div></footer>
+<script>
+createApplet('ggb-analisis', api => {
+  setAxes(api,-3,6,-4,5);
+  safeEval(api,['f(x)=0.2*(x+1)*(x-2)*(x-5)+1','M=Extremum(f,-2,2)','N=Extremum(f,2,5)','Y=(0,f(0))']);
+  styleLine(api,'f',15,76,129,6);
+  stylePoint(api,'M',220,38,38,7);
+  stylePoint(api,'N',245,158,11,7);
+  stylePoint(api,'Y',45,180,90,6);
+  hideLabels(api,['f']);
+  showLabels(api,['M','N','Y']);
+});
+</script>
+</body></html>

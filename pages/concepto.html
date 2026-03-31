@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>1. Concepto de función · Tema 9</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+  <script src="../js/ggb-helper.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <img src="../assets/moto-mates.png" alt="Logo Moto-Mates">
+        <div class="brand-text">
+          <h1>Tema 9 · Funciones · 3.º ESO</h1>
+          <p>1. Concepto de función · David Cortés Chaparro</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Inicio</a><a href="concepto.html" class="active">Concepto de función</a><a href="dominio.html" class="">Dominio y recorrido</a><a href="cortes.html" class="">Puntos de corte</a><a href="monotonia.html" class="">Monotonía y extremos</a><a href="simetria.html" class="">Simetría y periodicidad</a><a href="trozos.html" class="">Funciones a trozos</a><a href="analisis.html" class="">Análisis global</a><a href="lineales.html" class="">Funciones lineales</a><a href="cuadraticas.html" class="">Funciones cuadráticas</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Inicio</a> · 1. Concepto de función</div>
+    
+<section class="notice"><strong>Definición:</strong> una función asigna a cada valor de \(x\) una única imagen \(y\).</section>
+<section class="card"><h2>Cómo reconocer una función</h2><p>La forma visual más rápida es la <strong>prueba de la recta vertical</strong>: si una recta vertical corta la gráfica en más de un punto, no es una función.</p><div class="math-box">Ejemplo de función: \(y=x^2-1\).<br>Ejemplo de relación que no es función: \(x^2+y^2=1\).</div></section>
+<section class="ggb-card"><h3>Applet 1 · Sí es función</h3><p>Mueve el deslizador de \(x\). La recta vertical solo corta a la parábola en un punto.</p>
+<div class="controls"><div class="control"><label>Valor de \(x\) <span id="func-x-value"></span></label><input id="func-x" type="range" min="-2.5" max="2.5" step="0.1" value="1"></div></div>
+<div class="ggb-wrap"><div id="ggb-funcion" class="ggb-container"></div></div></section>
+<section class="ggb-card"><h3>Applet 2 · No es función: la circunferencia</h3><p>Usamos la circunferencia \(x^2+y^2=1\), dibujada como dos semicírculos. Para muchos valores de \(x\), la recta vertical corta en dos puntos.</p>
+<div class="controls"><div class="control"><label>Valor de \(x\) <span id="circ-x-value"></span></label><input id="circ-x" type="range" min="-1" max="1" step="0.01" value="0.5"></div></div>
+<div class="ggb-wrap"><div id="ggb-circulo" class="ggb-container"></div></div></section>
+
+    <div class="page-nav"><span></span><a class="button" href="dominio.html">Siguiente →</a></div>
+  </div>
+</main>
+<footer>
+  <div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Esta versión está rehecha para que todas las páginas carguen y los applets respondan a los deslizadores.</div></div>
+</footer>
+<script>
+
+let appFuncion, appCirculo;
+createApplet("ggb-funcion", api => {
+  appFuncion = api;
+  setAxes(api, -5, 5, -4, 8);
+  safeEval(api, ["t=1","f(x)=x^2-1","r: x=t","A=(t,f(t))"]);
+  styleLine(api,"f",15,76,129,6); styleLine(api,"r",220,38,38,4,1); stylePoint(api,"A",245,158,11,6); hideLabels(api,["f","r"]);
+});
+createApplet("ggb-circulo", api => {
+  appCirculo = api;
+  setAxes(api, -1.5, 1.5, -1.5, 1.5);
+  safeEval(api,["uCirc=0.5","cSup(x)=sqrt(1-x^2)","cInf(x)=-sqrt(1-x^2)","s: x=uCirc","A=(uCirc,sqrt(1-uCirc^2))","B=(uCirc,-sqrt(1-uCirc^2))"]);
+  styleLine(api,"cSup",15,76,129,6); styleLine(api,"cInf",15,76,129,6); styleLine(api,"s",220,38,38,4,1); stylePoint(api,"A",245,158,11,6); stylePoint(api,"B",245,158,11,6); hideLabels(api,["cSup","cInf","s"]);
+});
+bindRange("func-x","func-x-value", value => { if(appFuncion) safeSetNumeric(appFuncion,"t",value); }, 1);
+bindRange("circ-x","circ-x-value", value => { if(appCirculo) safeSetNumeric(appCirculo,"uCirc",value); }, 2);
+
+</script>
+</body></html>

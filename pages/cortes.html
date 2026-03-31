@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>3. Puntos de corte · Tema 9</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[["\(","\)"],["$","$"]]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+  <script src="../js/ggb-helper.js"></script>
+</head>
+<body>
+<header class="site-header"><div class="container"><div class="topbar"><div class="brand"><img src="../assets/moto-mates.png" alt="Logo Moto-Mates"><div class="brand-text"><h1>Tema 9 · Funciones · 3.º ESO</h1><p>3. Puntos de corte · David Cortés Chaparro</p></div></div><nav class="nav"><a href="../index.html">Inicio</a><a href="concepto.html">Concepto de función</a><a href="dominio.html">Dominio y recorrido</a><a href="cortes.html" class="active">Puntos de corte</a><a href="monotonia.html">Monotonía y extremos</a><a href="simetria.html">Simetría y periodicidad</a><a href="trozos.html">Funciones a trozos</a><a href="analisis.html">Análisis global</a><a href="lineales.html">Funciones lineales</a><a href="cuadraticas.html">Funciones cuadráticas</a></nav></div></div></header>
+<main><div class="container"><div class="breadcrumbs"><a href="../index.html">Inicio</a> · 3. Puntos de corte</div>
+<section class="card"><h2>Puntos de corte con los ejes</h2><p>Para hallar el corte con el eje X se hace \(y=0\). Para el corte con el eje Y se sustituye \(x=0\).</p><div class="math-box">Si \(y=mx+n\), entonces el corte con el eje Y es \((0,n)\), y el corte con el eje X es \(\left(-\dfrac{n}{m},0\right)\) si \(m\ne 0\).</div></section>
+<section class="ggb-card"><h3>Applet · Recta con cortes variables</h3><p>Mueve \(m\) y \(n\). El punto naranja es el corte con el eje Y y el rojo es el corte con el eje X cuando existe.</p><div class="controls"><div class="control"><label>Pendiente \(m\) <span id="cut-m-value"></span></label><input id="cut-m" type="range" min="-4" max="4" step="0.1" value="-2"></div><div class="control"><label>Ordenada \(n\) <span id="cut-n-value"></span></label><input id="cut-n" type="range" min="-6" max="6" step="0.1" value="6"></div></div><div class="math-box" id="cut-formula"></div><div class="ggb-wrap"><div id="ggb-cortes" class="ggb-container"></div></div></section>
+<div class="page-nav"><a class="button secondary" href="dominio.html">← Anterior</a><a class="button" href="monotonia.html">Siguiente →</a></div></div></main>
+<footer><div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Versión corregida sin errores de sintaxis matemática.</div></div></footer>
+<script>
+let appCut;
+function updateCutFormula(){
+  const m=Number(document.getElementById('cut-m').value);
+  const n=Number(document.getElementById('cut-n').value);
+  const sign=n>=0?'+':'';
+  const xcut = Math.abs(m) > 1e-9 ? (-n/m).toFixed(2) : 'no existe';
+  document.getElementById('cut-formula').innerHTML = String.raw`Recta: \(y=${m.toFixed(1)}x${sign}${n.toFixed(1)}\). Corte en Y: \((0,${n.toFixed(1)})\). Corte en X: ${Math.abs(m)>1e-9 ? `\((${xcut},0)\)` : 'no existe'}.`;
+  rerenderMath();
+}
+createApplet('ggb-cortes', api => {
+  appCut=api;
+  setAxes(api,-8,8,-8,8);
+  safeEval(api,['mCut=-2','nCut=6','f(x)=mCut*x+nCut','A=(0,nCut)','B=If(mCut!=0,(-nCut/mCut,0),(NaN,NaN))']);
+  styleLine(api,'f',15,76,129,6);
+  stylePoint(api,'A',245,158,11,6);
+  stylePoint(api,'B',220,38,38,6);
+  hideLabels(api,['f']);
+  showLabels(api,['A','B']);
+});
+bindRange('cut-m','cut-m-value', value => { if(appCut) safeSetNumeric(appCut,'mCut',value); updateCutFormula(); },1);
+bindRange('cut-n','cut-n-value', value => { if(appCut) safeSetNumeric(appCut,'nCut',value); updateCutFormula(); },1);
+</script>
+</body></html>

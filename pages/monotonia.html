@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>4. Monotonía y extremos · Tema 9</title><link rel="stylesheet" href="../css/styles.css"><script>window.MathJax={tex:{inlineMath:[["\(","\)"],["$","$"]]},svg:{fontCache:'global'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://www.geogebra.org/apps/deployggb.js"></script><script src="../js/ggb-helper.js"></script></head>
+<body><header class="site-header"><div class="container"><div class="topbar"><div class="brand"><img src="../assets/moto-mates.png" alt="Logo Moto-Mates"><div class="brand-text"><h1>Tema 9 · Funciones · 3.º ESO</h1><p>4. Monotonía y extremos · David Cortés Chaparro</p></div></div><nav class="nav"><a href="../index.html">Inicio</a><a href="concepto.html">Concepto de función</a><a href="dominio.html">Dominio y recorrido</a><a href="cortes.html">Puntos de corte</a><a href="monotonia.html" class="active">Monotonía y extremos</a><a href="simetria.html">Simetría y periodicidad</a><a href="trozos.html">Funciones a trozos</a><a href="analisis.html">Análisis global</a><a href="lineales.html">Funciones lineales</a><a href="cuadraticas.html">Funciones cuadráticas</a></nav></div></div></header>
+<main><div class="container"><div class="breadcrumbs"><a href="../index.html">Inicio</a> · 4. Monotonía y extremos</div>
+<section class="card"><h2>Monotonía y extremos</h2><p>Una función es <strong>creciente</strong> si al aumentar \(x\) también aumenta \(y\), y <strong>decreciente</strong> si ocurre lo contrario. Los máximos y mínimos son puntos donde la gráfica cambia de sentido.</p><div class="math-box">En \(f(x)=x^3-3x\), hay un máximo relativo en \((-1,2)\) y un mínimo relativo en \((1,-2)\).</div></section>
+<section class="ggb-card"><h3>Applet · Cúbica con máximo y mínimo</h3><p>La función \(f(x)=x^3-3x\) permite observar tramos crecientes, decrecientes y extremos relativos.</p><div class="ggb-wrap"><div id="ggb-mon" class="ggb-container"></div></div></section>
+<div class="page-nav"><a class="button secondary" href="cortes.html">← Anterior</a><a class="button" href="simetria.html">Siguiente →</a></div></div></main>
+<footer><div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Versión corregida sin errores de sintaxis matemática.</div></div></footer>
+<script>
+createApplet('ggb-mon', api => {
+  setAxes(api,-3.5,3.5,-4,4);
+  safeEval(api,['f(x)=x^3-3x','A=(-1,2)','B=(1,-2)']);
+  styleLine(api,'f',15,76,129,6);
+  stylePoint(api,'A',220,38,38,7);
+  stylePoint(api,'B',245,158,11,7);
+  hideLabels(api,['f']);
+  showLabels(api,['A','B']);
+});
+</script>
+</body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>9. Funciones cuadráticas · Tema 9</title><link rel="stylesheet" href="../css/styles.css"><script>window.MathJax={tex:{inlineMath:[["\(","\)"],["$","$"]]},svg:{fontCache:'global'}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><script src="https://www.geogebra.org/apps/deployggb.js"></script><script src="../js/ggb-helper.js"></script></head>
+<body><header class="site-header"><div class="container"><div class="topbar"><div class="brand"><img src="../assets/moto-mates.png" alt="Logo Moto-Mates"><div class="brand-text"><h1>Tema 9 · Funciones · 3.º ESO</h1><p>9. Funciones cuadráticas · David Cortés Chaparro</p></div></div><nav class="nav"><a href="../index.html">Inicio</a><a href="concepto.html">Concepto de función</a><a href="dominio.html">Dominio y recorrido</a><a href="cortes.html">Puntos de corte</a><a href="monotonia.html">Monotonía y extremos</a><a href="simetria.html">Simetría y periodicidad</a><a href="trozos.html">Funciones a trozos</a><a href="analisis.html">Análisis global</a><a href="lineales.html">Funciones lineales</a><a href="cuadraticas.html" class="active">Funciones cuadráticas</a></nav></div></div></header>
+<main><div class="container"><div class="breadcrumbs"><a href="../index.html">Inicio</a> · 9. Funciones cuadráticas</div>
+<section class="card"><h2>Funciones cuadráticas</h2><p>Las funciones de la forma \(y=ax^2+bx+c\) dibujan parábolas. El signo de \(a\) determina si abren hacia arriba o hacia abajo.</p><div class="math-box">El eje de simetría es \(x=-\dfrac{b}{2a}\).</div></section>
+<section class="ggb-card"><h3>Applet · Parábola con coeficientes variables</h3><p>Cambia \(a\), \(b\) y \(c\) para modificar la parábola, el vértice y el eje de simetría.</p><div class="controls"><div class="control"><label>Coeficiente \(a\) <span id="qa-value"></span></label><input id="qa" type="range" min="-3" max="3" step="0.1" value="0.8"></div><div class="control"><label>Coeficiente \(b\) <span id="qb-value"></span></label><input id="qb" type="range" min="-6" max="6" step="0.1" value="-2"></div><div class="control"><label>Coeficiente \(c\) <span id="qc-value"></span></label><input id="qc" type="range" min="-6" max="6" step="0.1" value="-3"></div></div><div class="math-box" id="quad-formula"></div><div class="ggb-wrap"><div id="ggb-quad" class="ggb-container"></div></div></section>
+<div class="page-nav"><a class="button secondary" href="lineales.html">← Anterior</a><a class="button" href="../index.html">Volver al inicio</a></div></div></main>
+<footer><div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Versión corregida sin errores de sintaxis matemática.</div></div></footer>
+<script>
+let appQuad;
+function updateQuadFormula(){
+  const a=Number(document.getElementById('qa').value);
+  const b=Number(document.getElementById('qb').value);
+  const c=Number(document.getElementById('qc').value);
+  const s1=b>=0?'+':'';
+  const s2=c>=0?'+':'';
+  const eje = Math.abs(a)>1e-9 ? (-b/(2*a)).toFixed(2) : 'no existe';
+  document.getElementById('quad-formula').innerHTML = String.raw`Parábola: \(y=${a.toFixed(1)}x^2${s1}${b.toFixed(1)}x${s2}${c.toFixed(1)}\). Eje: ${Math.abs(a)>1e-9 ? `\(x=${eje}\)` : 'no existe'}.`;
+  rerenderMath();
+}
+createApplet('ggb-quad', api => {
+  appQuad=api;
+  setAxes(api,-7,7,-8,8);
+  safeEval(api,['aCoef=0.8','bCoef=-2','cCoef=-3','f(x)=aCoef*x^2+bCoef*x+cCoef','V=Extremum(f)','eje: x=x(V)','Y=(0,cCoef)']);
+  styleLine(api,'f',15,76,129,6);
+  styleLine(api,'eje',220,38,38,3,1);
+  stylePoint(api,'V',45,180,90,7);
+  stylePoint(api,'Y',245,158,11,6);
+  hideLabels(api,['f','eje']);
+  showLabels(api,['V','Y']);
+});
+bindRange('qa','qa-value', value => { if(appQuad) safeSetNumeric(appQuad,'aCoef',value); updateQuadFormula(); },1);
+bindRange('qb','qb-value', value => { if(appQuad) safeSetNumeric(appQuad,'bCoef',value); updateQuadFormula(); },1);
+bindRange('qc','qc-value', value => { if(appQuad) safeSetNumeric(appQuad,'cCoef',value); updateQuadFormula(); },1);
+</script>
+</body></html>

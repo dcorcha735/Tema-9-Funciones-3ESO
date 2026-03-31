@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>5. Simetría y periodicidad · Tema 9</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+  <script src="../js/ggb-helper.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <img src="../assets/moto-mates.png" alt="Logo Moto-Mates">
+        <div class="brand-text">
+          <h1>Tema 9 · Funciones · 3.º ESO</h1>
+          <p>5. Simetría y periodicidad · David Cortés Chaparro</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="../index.html">Inicio</a><a href="concepto.html" class="">Concepto de función</a><a href="dominio.html" class="">Dominio y recorrido</a><a href="cortes.html" class="">Puntos de corte</a><a href="monotonia.html" class="">Monotonía y extremos</a><a href="simetria.html" class="active">Simetría y periodicidad</a><a href="trozos.html" class="">Funciones a trozos</a><a href="analisis.html" class="">Análisis global</a><a href="lineales.html" class="">Funciones lineales</a><a href="cuadraticas.html" class="">Funciones cuadráticas</a>
+      </nav>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="container">
+    <div class="breadcrumbs"><a href="../index.html">Inicio</a> · 5. Simetría y periodicidad</div>
+    
+<section class="card"><h2>Simetría par, impar y periodicidad</h2><p>Una función es <strong>par</strong> si \(f(-x)=f(x)\), e <strong>impar</strong> si \(f(-x)=-f(x)\).</p><div class="math-box">Ejemplo par: \(f(x)=x^2\).<br>Ejemplo impar: \(g(x)=x^3\).</div></section>
+<section class="ggb-card"><h3>Applet 1 · Simetría par</h3><p>Compara los puntos de \(x\) y \(-x\) en \(y=x^2\).</p><div class="controls"><div class="control"><label>Valor de \(x\) <span id="par-x-value"></span></label><input id="par-x" type="range" min="-3" max="3" step="0.1" value="1.5"></div></div><div class="ggb-wrap"><div id="ggb-par" class="ggb-container"></div></div></section>
+<section class="ggb-card"><h3>Applet 2 · Simetría impar</h3><p>Compara los puntos de \(x\) y \(-x\) en \(y=x^3\). Se verifica que las imágenes son opuestas.</p><div class="controls"><div class="control"><label>Valor de \(x\) <span id="imp-x-value"></span></label><input id="imp-x" type="range" min="-2.2" max="2.2" step="0.1" value="1.2"></div></div><div class="ggb-wrap"><div id="ggb-imp" class="ggb-container"></div></div></section>
+
+    <div class="page-nav"><a class="button secondary" href="monotonia.html">← Anterior</a><a class="button" href="trozos.html">Siguiente →</a></div>
+  </div>
+</main>
+<footer>
+  <div class="container"><div class="footer-box">Proyecto web con <strong>MathJax</strong> y <strong>GeoGebra</strong>. Esta versión está rehecha para que todas las páginas carguen y los applets respondan a los deslizadores.</div></div>
+</footer>
+<script>
+
+let appPar, appImp;
+createApplet('ggb-par', api => { appPar=api; setAxes(api,-4,4,-1,10); safeEval(api,['tPar=1.5','f(x)=x^2','A=(tPar,f(tPar))','B=(-tPar,f(-tPar))']); styleLine(api,'f',15,76,129,6); stylePoint(api,'A',245,158,11,6); stylePoint(api,'B',220,38,38,6); hideLabels(api,['f']); });
+createApplet('ggb-imp', api => { appImp=api; setAxes(api,-3,3,-10,10); safeEval(api,['tImp=1.2','g(x)=x^3','C=(tImp,g(tImp))','D=(-tImp,g(-tImp))']); styleLine(api,'g',15,76,129,6); stylePoint(api,'C',245,158,11,6); stylePoint(api,'D',220,38,38,6); hideLabels(api,['g']); });
+bindRange('par-x','par-x-value', value => { if(appPar) safeSetNumeric(appPar,'tPar',value); },1);
+bindRange('imp-x','imp-x-value', value => { if(appImp) safeSetNumeric(appImp,'tImp',value); },1);
+
+</script>
+</body></html>
